@@ -87,7 +87,7 @@ $(document).ready(function(){
 				contentType: false,
 				success: function( response ) {
 					if (response.codigo==0) {
-						setTimeout(function(){window.location = "https://mail.tecnoweb.org.bo/inf513/grupo08sc/proyecto2/public/almacen"} , 100);   
+						setTimeout(function(){window.location = "https://mail.tecnoweb.org.bo/inf513/grupo02sa/proyecto2/public/almacen"} , 100);   
 					}else{
 						alert(response.mensaje);
 					}
