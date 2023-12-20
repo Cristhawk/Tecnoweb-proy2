@@ -81,6 +81,35 @@ Route::get('user/{id}',[App\Http\Controllers\UserController::class,'show']);
 Route::get('user/{id}/edit',[App\Http\Controllers\UserController::class,'edit']);
 
 
+Route::get('almacen',[App\Http\Controllers\AlmacenController::class,'index']);
+Route::get('almacen/create',[App\Http\Controllers\AlmacenController::class,'create']);
+Route::post('almacen/create',[App\Http\Controllers\AlmacenController::class,'store']);
+Route::post('almacen/estado',[App\Http\Controllers\AlmacenController::class,'estado']);
+Route::post('almacen/update',[App\Http\Controllers\AlmacenController::class,'update']);
+Route::get('almacen/search',[App\Http\Controllers\AlmacenController::class,'search']);
+Route::get('almacen/{id}',[App\Http\Controllers\AlmacenController::class,'show']);
+Route::get('almacen/{id}/edit',[App\Http\Controllers\AlmacenController::class,'edit']);
+
+Route::get('compra',[App\Http\Controllers\CompraController::class,'index']);
+Route::get('compra/create',[App\Http\Controllers\CompraController::class,'create']);
+Route::post('compra/create',[App\Http\Controllers\CompraController::class,'store']);
+Route::post('compra/estado',[App\Http\Controllers\CompraController::class,'estado']);
+Route::post('compra/update',[App\Http\Controllers\CompraController::class,'update']);
+Route::get('compra/search',[App\Http\Controllers\CompraController::class,'search']);
+Route::get('compra/{id}',[App\Http\Controllers\CompraController::class,'show']);
+Route::get('compra/{id}/edit',[App\Http\Controllers\CompraController::class,'edit']);
+
+Route::get('producto',[App\Http\Controllers\ProductoController::class,'index']);
+Route::get('producto/create',[App\Http\Controllers\ProductoController::class,'create']);
+Route::post('producto/create',[App\Http\Controllers\ProductoController::class,'store']);
+Route::post('producto/estado',[App\Http\Controllers\ProductoController::class,'estado']);
+Route::post('producto/update',[App\Http\Controllers\ProductoController::class,'update']);
+Route::get('producto/search',[App\Http\Controllers\ProductoController::class,'search']);
+Route::get('producto/{id}',[App\Http\Controllers\ProductoController::class,'show']);
+Route::get('producto/{id}/edit',[App\Http\Controllers\ProductoController::class,'edit']);
+
+
+Route::get('reporte',[App\Http\Controllers\ReporteController::class,'index']);
 
 Route::get('lienzo',[App\Http\Controllers\LienzoController::class,'index']);
 Route::get('lienzo/create',[App\Http\Controllers\LienzoController::class,'create']);
@@ -100,3 +129,4 @@ Route::get('participante',[App\Http\Controllers\ParticipanteController::class,'i
 Route::get('participante/{id}',[App\Http\Controllers\ParticipanteController::class,'show']);
 Route::post('participante/lienzo/enviarMovimiento',[App\Http\Controllers\ParticipanteController::class,'enviarMovimiento']);
 Route::post('participante/lienzo/generarVozAyuda',[App\Http\Controllers\ParticipanteController::class,'generarVozAyuda']);
+

@@ -44,7 +44,7 @@ class Usuario extends Authenticatable
 
     public function scope_getAdministradores($query)
     {
-        return $query->orderBy('id','desc')->get();
+        return $query->where('estado',1)->orderBy('id','desc')->get();
     }
 
     public function scope_getJugadores($query)
@@ -89,11 +89,12 @@ class Usuario extends Authenticatable
 
     public static function createAdministrador($request)
     {
+
         $usuario = new Usuario;
-        $usuario->name = $request->input('name'); 
+        $usuario->nombre = $request->input('name'); 
         $usuario->email = $request->input('email');
-        $usuario->rol = $request->input('rol');   
-        $usuario->tema = "";   
+        $usuario->id_grupo = $request->input('rol');   
+        $usuario->tema = "Juvenil";   
         $usuario->is_dia = false;   
         $usuario->password =  Hash::make($request->input('password'));
         $usuario->save();
@@ -124,9 +125,9 @@ class Usuario extends Authenticatable
     public static function updateAdministrador($request)
     {
         $usuario = Usuario::findOrFail($request->input('id'));
-        $usuario->name = $request->input('name');
+        $usuario->nombre = $request->input('name'); 
         $usuario->email = $request->input('email');
-        $usuario->rol = $request->input('rol');   
+        $usuario->id_grupo = $request->input('rol');   
         if ($request->input('password')) {
             $usuario->password =  Hash::make($request->input('password'));
         }
@@ -160,7 +161,7 @@ class Usuario extends Authenticatable
     public static function estadoAdministrador($request)
     {
         $usuario = Usuario::findOrFail($request->input('id'));
-        $usuario->estado = $request->input('estado');
+        $usuario->estado =0;
         $usuario->update();
         return $usuario;
     }

@@ -226,14 +226,37 @@
                             </a>
                         </li>
                         <li id="navPuzzle" class="nav-item">
-                            <a href="{{url('lienzo')}}" class="nav-link">
+                            <a href="{{url('perfil')}}" class="nav-link">
                                 <i class="icon-calendar"></i>
                                 <span>
-                                    Diagrama
+                                    Perfil
                                 </span>
                             </a>
                         </li>
-                       
+                        <li id="navPuzzle" class="nav-item">
+                            <a href="{{url('almacen')}}" class="nav-link">
+                                <i class="icon-calendar"></i>
+                                <span>
+                                    Almacen
+                                </span>
+                            </a>
+                        </li>
+                        <li id="navPuzzle" class="nav-item">
+                            <a href="{{url('producto')}}" class="nav-link">
+                                <i class="icon-calendar"></i>
+                                <span>
+                                    Producto
+                                </span>
+                            </a>
+                        </li>
+                        <li id="navPuzzle" class="nav-item">
+                            <a href="{{url('reporte')}}" class="nav-link">
+                                <i class="icon-calendar"></i>
+                                <span>
+                                    Estadisticas
+                                </span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /main navigation -->

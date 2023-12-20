@@ -21,9 +21,11 @@ class UserController extends Controller
         $this->middleware('auth');
     }
     
-    public function index()
+    public function index(Request $request)
     {
-        return view('user.index',['users'=>Usuario::_getAdministradores()]);
+        $busqueda = $request->input('busqueda');
+        $resultados = Usuario::where('estado',1)->where('nombre', 'LIKE', '%' . trim($busqueda) . '%')->get();
+        return view('user.index',['users'=>$resultados]);
     }
 
     /**
@@ -93,8 +95,7 @@ class UserController extends Controller
                     }                     
                 }else{
                         $usuario = Usuario::updateAdministrador($request);
-                        $destinationPath = Usuario::createDirectorioPorIdAdministrador($usuario->id);
-                        Usuario::actualizarPerfilPorIdAdministrador($request,$usuario->id,$destinationPath);
+                        
                 }
              
             }else{
@@ -127,7 +128,9 @@ class UserController extends Controller
     {
         try {
             DB::beginTransaction();
-            Usuario::estadoAdministrador($request);
+            $usuario = Usuario::findOrFail($request->input('id'));
+            $usuario->estado = 0;
+            $usuario->save();
             DB::commit();
             return response()->json(['codigo'=>0, 'mensaje'=>'Estado del usuario actualizado correctamente']);
         } catch (\Exception $e) {

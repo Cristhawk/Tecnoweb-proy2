@@ -30,8 +30,9 @@
 					<label class="col-form-label col-md-2">Tipo usuario</label>
 					<div class="col-md-10">
 						<select class="form-control select" data-fouc="" id="rol" name="rol" required>
-							<option value="Administrativo" selected>Administrativo</option>
-							<option value="Empleado">Empleado</option>
+							<option value="1" selected>Administrativo</option>
+							<option value="2">Empleado</option>
+							<option value="3">Proveedor</option>
 						</select>
 					</div>
 				</div>	
@@ -82,7 +83,7 @@ $(document).ready(function(){
 				contentType: false,
 				success: function( response ) {
 					if (response.codigo==0) {
-						setTimeout(function(){window.location = "/user"} , 100);   
+						setTimeout(function(){window.location = "https://mail.tecnoweb.org.bo/inf513/grupo08sc/proyecto2/public/user"} , 100);   
 					}else{
 						alert(response.mensaje);
 					}

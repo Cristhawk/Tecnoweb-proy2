@@ -8,20 +8,14 @@
             </div>
 
             <div class="modal-body">
-                @if($item->estado==0)
                     <p> ¿ Esta seguro de inhabilitar al usuario? </p>
-                @else
-                    <p> ¿ Esta seguro de habilitar al usuario? </p>
-                @endif
+                
             </div>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
-                @if($item->estado==0)
                     <button type="button" class="btn bg-primary" data-dismiss="modal" onclick="inhabilitar('{{$item->id}}');" >Inhabilitar</button>
-                @else
-                    <button type="button" class="btn bg-primary" data-dismiss="modal" onclick="habilitar('{{$item->id}}');" >Habilitar</button>
-                @endif
+                
                 
             </div>
         </div>

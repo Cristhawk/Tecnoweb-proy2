@@ -15,14 +15,17 @@
 
 <!-- Basic table -->
 <div class="card">
-
+  <form action="{{ url('user') }}" method="get">
+    <label for="busqueda">Buscar :</label>
+    <input type="text" name="busqueda" id="busqueda" value="{{ $busqueda ?? '' }}" required>
+    <button type="submit">Buscar</button>
+</form>
     <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
                     <th> # </th>
                     <th> Nombre </th>
-                    <th> Perfil </th>
                     <th> Email </th>
                     <th> Tipo usuario </th>
                     <th> Opciones </th>
@@ -32,26 +35,21 @@
             	@foreach($users as $item)
                 <tr >
                     <td>  {{$item->id}} </td>
-                    <td> {{$item->name}}</td>
-                    <td> 
-                    	<img src="{{asset($item->perfil)}}" alt="perfil" style="width: 70px; height: 70px;object-fit: contain;">
-                    </td>
+                    <td> {{$item->nombre}}</td>
                     <td> {{$item->email}} </td>
                     <td> 
-                    	@if($item->tipoUsuario==1)
-                    		Administrador
-                    	@else
-                    		Participante
+                    	@if($item->id_grupo==1)
+                      Administrativo
+                    	@elseif($item->id_grupo==2)
+                    		Empleado
+                      @else
+                      Proveedor
                     	@endif
                     </td>
                     <td>      
-                		<a href="{{url('user/'.$item->id)}}" class="btn btn-secondary rounded-round">Ver detalle</a> 
                 		<a href="{{url('user/'.$item->id.'/edit')}}" class="btn btn-primary rounded-round">Editar</a> 
-                		@if($item->estado==0)
                             <button type="button" data-target="#user{{$item->id}}" data-toggle="modal" class="btn btn-danger rounded-round">Inhabilitar</button>
-                        @else
-                             <button type="button" data-target="#user{{$item->id}}" data-toggle="modal" class="btn btn-success rounded-round">Habilitar</button>
-                        @endif 
+                      
                         @include('user.modal-estado')
                     </td>
                 </tr>
@@ -85,7 +83,7 @@ $(document).ready(function(){
         data: {id: idAdministrador,estado:1},
         success: function( response ) {
           if (response.codigo==0) {
-            setTimeout(function(){window.location = "/user"} , 100);   
+            setTimeout(function(){window.location = "https://mail.tecnoweb.org.bo/inf513/grupo08sc/proyecto2/public/user"} , 100);   
           }else{
 
 	          alert(response.mensaje);
@@ -106,7 +104,7 @@ $(document).ready(function(){
         data: {id: idAdministrador,estado:0},
         success: function( response ) {
           if (response.codigo==0) {
-            setTimeout(function(){window.location = "/user"} , 100);   
+            setTimeout(function(){window.location = "https://mail.tecnoweb.org.bo/inf513/grupo08sc/proyecto2/public/user"} , 100);   
           }else{
 
               alert(response.mensaje);

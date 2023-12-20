@@ -18,7 +18,7 @@
 				<div class="form-group row">
 					<label class="col-form-label col-md-2">Nombre</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control font-weight-bold" id="name" name="name" placeholder="Nombre" value="{{$user->name}}" required>
+						<input type="text" class="form-control font-weight-bold" id="name" name="name" placeholder="Nombre" value="{{$user->nombre}}" required>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -30,30 +30,26 @@
 				<div class="form-group row">
 					<label class="col-form-label col-md-2">Tipo usuario</label>
 					<div class="col-md-10">
-						<select class="form-control select" data-fouc="" id="tipoUsuario" name="tipoUsuario" required>
-							@if($user->tipoUsuario==1)
+						<select class="form-control select" data-fouc="" id="rol" name="rol" required>
+							@if($user->id_grupo==1)
 								<option value="1" selected>Administrador</option>
-								<option value="2">Participante</option>
-							@endif
-							@if($user->tipoUsuario==2)
+							@else
 								<option value="1">Administrador</option>
-								<option value="2" selected>Participante</option>
+							@endif
+							@if($user->id_grupo==2)
+								<option value="2" selected>Empleado</option>
+							@else
+								<option value="2">Empleado</option>
+							@endif
+							@if($user->id_grupo==3)
+								<option value="3" selected>Proveedor</option>
+							@else
+								<option value="3">Proveedor</option>
 							@endif
 						</select>
 					</div>
 				</div>	
-				<div class="form-group row">
-					<label class="col-form-label col-md-2">Password</label>
-					<div class="col-md-10">
-						<input type="text" class="form-control font-weight-bold" id="password" name="password"  placeholder="Password">
-					</div>
-				</div>	
-				<div class="form-group row">
-					<label class="col-form-label col-md-2">Perfil</label>
-					<div class="col-md-10">
-						<input type="file" class="form-control font-weight-bold" id="perfil" name="perfil" accept="image/jpg, image/jpeg,image/png" placeholder="Perfil" >
-					</div>
-				</div>	
+				
 			</fieldset>
 			<div class="text-right">
 				<button id="guardar" type="button" class="btn btn-primary">Guardar <i class="icon-paperplane ml-2"></i></button>
@@ -97,7 +93,7 @@ $(document).ready(function(){
 				contentType: false,
 				success: function( response ) {
 					if (response.codigo==0) {
-						setTimeout(function(){window.location = "/user"} , 100);   
+						setTimeout(function(){window.location = "https://mail.tecnoweb.org.bo/inf513/grupo08sc/proyecto2/public/user"} , 100);   
 					}else{
 						alert(response.mensaje);
 					}

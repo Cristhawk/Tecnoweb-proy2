@@ -48,13 +48,17 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
+        $usuario = Usuario::where('email',$request->input('email'))->where('estado',1)->first();
 
-        if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+        if($usuario){
+            if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
                 return redirect('/perfil');
-        } else {
+            } else {
+                return redirect()->back();
+            }
+        }else {
             return redirect()->back();
         }
-
     }
 
     public function logout(Request $request){
