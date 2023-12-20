@@ -75,7 +75,7 @@ $(document).ready(function(){
         data: {id: idAdministrador,estado:1},
         success: function( response ) {
           if (response.codigo==0) {
-            setTimeout(function(){window.location = "https://mail.tecnoweb.org.bo/inf513/grupo08sc/proyecto2/public/producto"} , 100);   
+            setTimeout(function(){window.location = "https://mail.tecnoweb.org.bo/inf513/grupo02sa/proyecto2/public/producto"} , 100);   
           }else{
 
 	          alert(response.mensaje);
@@ -96,7 +96,7 @@ $(document).ready(function(){
         data: {id: idAdministrador,estado:0},
         success: function( response ) {
           if (response.codigo==0) {
-            setTimeout(function(){window.location = "https://mail.tecnoweb.org.bo/inf513/grupo08sc/proyecto2/public/producto"} , 100);   
+            setTimeout(function(){window.location = "https://mail.tecnoweb.org.bo/inf513/grupo02sa/proyecto2/public/producto"} , 100);   
           }else{
 
               alert(response.mensaje);
